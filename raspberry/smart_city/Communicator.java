@@ -75,6 +75,7 @@ public class Communicator {
         System.out.println("COMMUNIC:    Sendingdd stop request...");
         try {
             System.out.println("COMMUNIC:    Calling python script python" + message);
+            
             Process proc = Runtime.getRuntime().exec(new String[] {"python", "-c", "import cliente; cliente.main("+message+")"});
             response = "1";
         }catch (Exception ex) {
@@ -91,7 +92,7 @@ public class Communicator {
     @Path("sendConfiguration")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String sendConfiguration(RoomConfiguration newConfiguration) {
+    public String sendConfiguration(RoomConfiguration newConfiguration) 
         System.out.println("COMMUNIC:    Rest server receiving configuration...");
 	
         String response = //applyAirChanges(newConfiguration) + applyLightChanges(newConfiguration) +
